@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestRandomBytes(t *testing.T) {
+func TestRandomBytess(t *testing.T) {
 	type args struct {
 		len int
 	}
@@ -13,15 +13,22 @@ func TestRandomBytes(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		want    []byte
+		want    int
 		wantErr bool
 	}{
-		// TODO: Add test cases
+		{
+			name: "Verify RandomBytes length result",
+			args: args{
+				len: 32,
+			},
+			want: 16,
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := RandomBytes(tt.args.len)
+			res, err := RandomBytes(tt.args.len)
+			got := len(res)
 
 			if (err != nil) != tt.wantErr {
 				t.Errorf("RandomBytes() error = %v, wantErr %v", err, tt.wantErr)
@@ -43,23 +50,30 @@ func TestRandomString(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		wantStr string
+		want    int
 		wantErr bool
 	}{
-		// TODO: Add test cases
+		{
+			name: "Verify RandomString length result",
+			args: args{
+				len: 32,
+			},
+			want: 32,
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotStr, err := RandomString(tt.args.len)
+			res, err := RandomString(tt.args.len)
+			gotStr := len(res)
 
 			if (err != nil) != tt.wantErr {
 				t.Errorf("RandomString() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 
-			if gotStr != tt.wantStr {
-				t.Errorf("RandomString() = %v, want %v", gotStr, tt.wantStr)
+			if gotStr != tt.want {
+				t.Errorf("RandomString() = %v, want %v", gotStr, tt.want)
 			}
 		})
 	}
