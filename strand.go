@@ -1,3 +1,4 @@
+// Package strand generates just secure random bytes or strings with fixed length.
 package strand
 
 import (
