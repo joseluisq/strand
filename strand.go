@@ -8,6 +8,10 @@ import (
 
 // RandomBytes generates secure random bytes
 func RandomBytes(len int) ([]byte, error) {
+	if len <= 0 {
+		return []byte(nil), nil
+	}
+
 	size := math.Ceil(float64(len) / 2.0)
 	byts := make([]byte, int(size))
 
@@ -22,6 +26,10 @@ func RandomBytes(len int) ([]byte, error) {
 
 // RandomString generates a secure random string
 func RandomString(len int) (str string, err error) {
+	if len <= 0 {
+		return "", nil
+	}
+
 	byts, err := RandomBytes(len)
 
 	if err != nil {

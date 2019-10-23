@@ -23,6 +23,13 @@ func TestRandomBytess(t *testing.T) {
 			},
 			want: 16,
 		},
+		{
+			name: "Verify RandomBytes with <= 0 length",
+			args: args{
+				len: 0,
+			},
+			want: 0,
+		},
 	}
 
 	for _, tt := range tests {
@@ -59,6 +66,13 @@ func TestRandomString(t *testing.T) {
 				len: 32,
 			},
 			want: 32,
+		},
+		{
+			name: "Verify RandomString with <= 0 length",
+			args: args{
+				len: 0,
+			},
+			want: 0,
 		},
 	}
 
